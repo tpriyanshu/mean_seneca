@@ -1,0 +1,148 @@
+<div>
+  <h3 class="display-3">Welcome!</h3>
+  <br><br>
+
+  <table class="float-left">
+    <thead class="thead-dark">
+      <tr>
+        <td>Features</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <button type="button" class="btn btn-primary" (click)="getAllProducts()">Show all products</button>
+          <br><br>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <h2>Category By Dropdown</h2>
+          <!-- Category By Dropdown -->
+          <div class="form-group">
+            <label for="category">Select Category</label>
+            <select (change)="getProductsByCategory()" class="form-control" [(ngModel)]="categorySelected">
+              <option value="Formal">Formal</option>
+              <option value="Casual">Casual</option>
+              <option value="Party">Party</option>
+            </select>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <h2>Category By Radio button</h2>
+          <!-- Category By Radio button -->
+          <div class="form-check form-check-inline">
+            <label class="form-check-label">
+              <input class="form-check-input" (change)="getProductsByCategory()" [(ngModel)]="categorySelected"
+                type="radio" name="category1" id="" value="Formal" />
+              Formal
+            </label>
+            <label class="form-check-label">
+              <input class="form-check-input" (change)="getProductsByCategory()" [(ngModel)]="categorySelected"
+                type="radio" name="category1" id="" value="Casual" />
+              Casual
+            </label>
+            <label class="form-check-label">
+              <input class="form-check-input" (change)="getProductsByCategory()" [(ngModel)]="categorySelected"
+                type="radio" name="category1" id="" value="Party" /> Party
+            </label>
+          </div>
+          <br><br>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <!-- Price by input[type="number"] -->
+          <h2>Price By Input, number</h2>
+          <div class="form-group">
+            <label for="price"></label>
+            <input [(ngModel)]="selectedPrice" type="number" class="form-control" aria-describedby="helpId"
+              placeholder="eg. 1231">
+            <br>
+            <button type="button" class="btn btn-outline-primary" (click)="getProductsByPrice()">Get products by
+              price</button>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <!-- Price by input[type="range"] -->
+          <h2>Price By Input, range</h2>
+          <div class="form-group">
+            <label for="price"></label>
+            <input [(ngModel)]="selectedPrice" min=500 max=3000 type="range" class="form-control"
+              aria-describedby="helpId" placeholder="eg. 1231">
+            <output>{{selectedPrice}}</output>
+            <br>
+            <button type="button" class="btn btn-outline-primary" (click)="getProductsByPrice()">Get products by
+              price</button>
+          </div>
+          <br><br>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <!-- Add a new product -->
+          <h2>Add a product</h2>
+          <div>
+            <div class="form-group">
+              <label for="">Id</label>
+              <input type="text" [(ngModel)]="newProduct.id" class="form-control" name="" id=""
+                aria-describedby="helpId" placeholder="eg. 12">
+            </div>
+            <div class="form-group">
+              <label for="">Name</label>
+              <input type="text" [(ngModel)]="newProduct.name" class="form-control" name="" id=""
+                aria-describedby="helpId" placeholder="product name">
+            </div>
+            <div class="form-group">
+              <label for="">Price</label>
+              <input type="text" [(ngModel)]="newProduct.price" class="form-control" name="" id=""
+                aria-describedby="helpId" placeholder="eg. 1254">
+            </div>
+            <div class="form-group">
+              <label for="category">Category</label>
+              <select [(ngModel)]="newProduct.category" class="form-control">
+                <option value="none">Select</option>
+                <option value="Formal">Formal</option>
+                <option value="Casual">Casual</option>
+                <option value="Party">Party</option>
+              </select>
+            </div>
+            <button (click)="addProduct()" type="button" class="btn btn-outline-primary">Add Product</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Product Table -->
+  <div *ngIf="productsList" class="float-right">
+    <div *ngIf="productsList.length==0">
+      <h3>No Product found</h3>
+    </div>
+    <div *ngIf="productsList.length>0">
+      <h2>Products List</h2>
+      <table class="table table-striped table-inverse table-responsive">
+        <thead class="thead-inverse thead-dark">
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Category</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of productsList">
+            <td scope="row">{{product.id}}</td>
+            <td>{{product.name}}</td>
+            <td>{{product.price}} </td>
+            <td>{{product.category}} </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

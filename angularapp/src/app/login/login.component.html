@@ -1,0 +1,15 @@
+<div class="login">
+  <div class="form-group">
+    <label for="">Username</label>
+    <input [(ngModel)]="username" type="text" class="form-control" name="" id="" aria-describedby="helpId"
+      placeholder="">
+  </div>
+  <div class="form-group">
+    <label for="">Password</label>
+    <input [(ngModel)]="password" type="password" class="form-control" name="" id="" aria-describedby="helpId"
+      placeholder="">
+  </div>
+  <button (click)="isLoginSuccessful()" type="button" class="btn btn-primary">Login</button>
+  <br><br>
+  <p>New User <a routerLink="/signup">Click here</a></p>
+</div>
