@@ -1,4 +1,4 @@
-"# mean_seneca" 
+# mean_seneca
 
 ## Users collection format
 Add following data in below format in users collection
